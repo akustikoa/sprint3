@@ -2,7 +2,7 @@ const movies = require('./data');
 
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
-  let result = movies.map((movie) => movie.director);
+  const result = movies.map((movie) => movie.director);
   console.log('EXERCICE 1 ->', result);
   return result;
 }
@@ -15,23 +15,37 @@ function getMoviesFromDirector(array, director) {
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
   const directorMovies = array.filter((array) => array.director === director);
-  const average = directorMovies.reduce((suma, movie) => suma + movie.score, 0);
-  const result = average / directorMovies.length;
+  let average = directorMovies.reduce((suma, movie) => suma + movie.score, 0);
+  let result = average / directorMovies.length;
   console.log(
     `EXERCICE 3 -> The average of the Films of ${director} are ` + result
   );
   return result;
 }
-// let comprovacio = moviesAverageOfDirector(array, 'Quentin Tarantino');
-// console.log(comprovacio);
 
-// Exercise 4:  Alphabetic order by title
-function orderAlphabetically(array) {
-  array.sort();
+//Exercise 4:  Alphabetic order by title
+function orderAlphabetically(movies) {
+  const orderedMoviesTitles = [...movies]
+    .sort((a, b) => a.title.localeCompare(b.title))
+    .map((movie) => movie.title)
+    .slice(0, 20);
+
+  console.log('EXERCISE 4 ->', orderedMoviesTitles);
+  return orderedMoviesTitles;
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {}
+function orderByYear(movies) {
+  const orderMoviesYear = [...movies].sort((a, b) => {
+    if (a.year === b.year) {
+      return a.title.localeCompare(b.title);
+    } else {
+      return a.year - b.year;
+    }
+  });
+  console.log(orderMoviesYear);
+  return orderMoviesYear;
+}
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {}
