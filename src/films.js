@@ -43,12 +43,22 @@ function orderByYear(movies) {
       return a.year - b.year;
     }
   });
-  console.log(orderMoviesYear);
+  console.log('Exercise 5', orderMoviesYear);
   return orderMoviesYear;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {}
+function moviesAverageByCategory(array, category) {
+  const categoryMovies = array.filter((item) => item.genre.includes(category));
+  if (categoryMovies.length === 0) {
+    return 0;
+  }
+  let average = categoryMovies.reduce((suma, movie) => suma + movie.score, 0);
+  let result = average / categoryMovies.length;
+  result = parseFloat(result.toFixed(2));
+  console.log(`Exercici 6, The average of category ${category} is: `, result);
+  return result;
+}
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}
