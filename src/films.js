@@ -9,7 +9,9 @@ function getAllDirectors(movies) {
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
-  return array.filter((array) => array.director === director);
+  const result = array.filter((array) => array.director === director);
+  console.log('EXERCISE 2 ->', result);
+  return result;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
@@ -18,7 +20,7 @@ function moviesAverageOfDirector(array, director) {
   let average = directorMovies.reduce((suma, movie) => suma + movie.score, 0);
   let result = average / directorMovies.length;
   console.log(
-    `EXERCICE 3 -> The average of the Films of ${director} are ` + result
+    `EXERCICE 3, The average of the Films of ${director} are ` + result
   );
   return result;
 }
@@ -30,7 +32,7 @@ function orderAlphabetically(movies) {
     .map((movie) => movie.title)
     .slice(0, 20);
 
-  console.log('EXERCISE 4 ->', orderedMoviesTitles);
+  console.log('EXERCISE 4', orderedMoviesTitles);
   return orderedMoviesTitles;
 }
 
@@ -43,7 +45,7 @@ function orderByYear(movies) {
       return a.year - b.year;
     }
   });
-  console.log('Exercise 5', orderMoviesYear);
+  console.log('EXERCISE 5', orderMoviesYear);
   return orderMoviesYear;
 }
 
@@ -56,7 +58,7 @@ function moviesAverageByCategory(array, category) {
   let average = categoryMovies.reduce((suma, movie) => suma + movie.score, 0);
   let result = average / categoryMovies.length;
   result = parseFloat(result.toFixed(2));
-  console.log(`Exercici 6, The average of category ${category} is: `, result);
+  console.log(`EXERCISE 6, The average of category ${category} is: `, result);
   return result;
 }
 
@@ -77,7 +79,10 @@ function hoursToMinutes(movies) {
     return { ...movie, duration: totalMinutes };
   });
 
-  console.log('Movies with duration converted to minutes:', newArrayMovies);
+  console.log(
+    'EXERCISE 7, Movies with duration converted to minutes:',
+    newArrayMovies
+  );
 
   return newArrayMovies;
 }
@@ -86,7 +91,7 @@ function hoursToMinutes(movies) {
 function bestFilmOfYear(movies, year) {
   const yearMovies = movies.filter((movie) => movie.year === year);
   if (yearMovies === 0) {
-    console.log(`There are no films in ${year}`);
+    console.log(`EXERCISE 8, There are no films in ${year}`);
     return [];
   }
   let maxScore = Math.max(...yearMovies.map((item) => item.score));
