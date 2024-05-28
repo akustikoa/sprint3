@@ -96,6 +96,7 @@ function bestFilmOfYear(movies, year) {
   }
   let maxScore = Math.max(...yearMovies.map((item) => item.score));
   let bestFilm = yearMovies.filter((movie) => movie.score === maxScore);
+  console.log(bestFilm);
   return bestFilm;
 }
 
